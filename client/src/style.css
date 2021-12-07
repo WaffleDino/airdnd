@@ -200,3 +200,24 @@
     background-color: #7FFFD4;
     color: #1E90FF;
   }
+
+  .logouticon {
+    position: absolute;
+    width: 100px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    color: black;
+    height: 40px;
+    left: 92%;
+    top: 10px;
+    background:#2bc6ff;
+    border-radius: 24px;
+    cursor: pointer;
+  }
+  
+  .logouticon:hover{
+    color: white;
+  }

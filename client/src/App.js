@@ -18,7 +18,9 @@ function App() {
   const [isShowLogin, setIsShowLogin] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")  
+  const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [currentUser, setCurrentUser] = useState('')
+  const currentUsername = currentUser.username
   const [email, setEmail] = useState("") 
   const [zip, setZip] = useState("")  
   const [dm, setDm] = useState(false)  
@@ -36,12 +38,12 @@ function App() {
     })
   },[])
 
-  // if(!currentUser) return <Landing setCurrentUser={setCurrentUser} />
+  
 
   return (
     <div className="App">
       <Router>
-      <NavBar handleLoginClick={handleLoginClick} />
+      <NavBar handleLoginClick={handleLoginClick} currentUsername={currentUsername} />
 
       <Routes>
   
@@ -52,7 +54,7 @@ function App() {
 
         </Route>
 
-        <Route path="/register" element={<Register isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} setEmail={setEmail} email={email} setZip={setZip} zip={zip} setDm={setDm} dm={dm} />}>
+        <Route path="/register" element={<Register isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} setEmail={setEmail} email={email} setZip={setZip} zip={zip} setDm={setDm} dm={dm} setPasswordConfirmation={setPasswordConfirmation} passwordConfirmation={passwordConfirmation}/>}>
 
         </Route>
 

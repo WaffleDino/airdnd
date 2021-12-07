@@ -15,7 +15,7 @@ function Landing({ isShowLogin, setCurrentUser, setUsername, setPassword, userna
     
 
     const handleLoginSubmit = (e) => {
-            e.preventDefault();
+            
             fetch("/login", {
               method: "POST",
               headers: {
@@ -25,8 +25,9 @@ function Landing({ isShowLogin, setCurrentUser, setUsername, setPassword, userna
                     
             }) 
               .then((r) => r.json())
-              .then((user) => setCurrentUser(user));
+              .then((user) => setCurrentUser(user.username));
               navigate('/home')
+            
           }
 
         //   const routeChange = (e) => {

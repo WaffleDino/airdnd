@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react";
 
-function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, username, password, email, setEmail, dm, setDm, zip, setZip }) {
+function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, username, password, email, setEmail, dm, setDm, zip, setZip, setPasswordConfirmation, passwordConfirmation }) {
 
     // const [newUser, setNewUser] = useState({
     //     username: '', 
@@ -25,6 +25,7 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
       body: JSON.stringify({
           username,
           password,
+          passwordConfirmation,
           email,
           zip,
               })  
@@ -54,6 +55,13 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
                             name="password"
                             className="login-box"
                             onChange={(e) => setPassword(e.target.value)} 
+                            /><br></br>
+                            <label>Confirm Password</label><br></br>
+                        <input
+                            type="password"
+                            name="password_confirmation"
+                            className="login-box"
+                            onChange={(e) => setPasswordConfirmation(e.target.value)} 
                             /><br></br>
                         <label>Email</label><br></br>
                             <input
