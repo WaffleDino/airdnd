@@ -1,41 +1,31 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-  } from "react-router-dom";
 import Home from "./Home";
 
-function Landing({ isShowLogin, setCurrentUser, setUsername, setPassword, username, password }) {
-
-    const navigate = useNavigate();
+function Login({ isShowLogin, setCurrentUser, setUsername, setPassword, username, password }) {
 
     
 
     const handleLoginSubmit = (e) => {
             e.preventDefault();
-            fetch("/login", {
+            fetch("http://localhost:3000/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({ username, password}),
                     
-            }) 
+            })
               .then((r) => r.json())
               .then((user) => setCurrentUser(user));
-              navigate('/home')
+              
           }
 
-        //   const routeChange = (e) => {
-        //     e.preventDefault();
-        //     router.push('/register');
-        //   }
 
     return (
-        
+        <div>
+        <Home />
+        <div className={`${!isShowLogin ? "active" : ""} show`}>
             <div className="login-form">
                 <div className="form-box solid">
                     <form onSubmit={handleLoginSubmit}>
@@ -56,12 +46,11 @@ function Landing({ isShowLogin, setCurrentUser, setUsername, setPassword, userna
                             /><br></br>
                             <input type="submit" value="LOGIN" className="login-btn" />
                     </form>
-                    
-                    <NavLink to="/register" className="register-btn">Register</NavLink>
-                    
                 </div>
             </div>
-        
+        </div>
+        </div>
     );
 }
-export default Landing
+
+export default Login

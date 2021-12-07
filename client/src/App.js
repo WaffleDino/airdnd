@@ -36,28 +36,27 @@ function App() {
     })
   },[])
 
-  if(!currentUser) return <Landing setCurrentUser={setCurrentUser} />
+  // if(!currentUser) return <Landing setCurrentUser={setCurrentUser} />
 
   return (
     <div className="App">
       <Router>
       <NavBar handleLoginClick={handleLoginClick} />
 
-
       <Routes>
   
-        <Route path="search" element={<Search />}>
+        <Route path="/search" element={<Search />}>
           
         </Route>
         <Route path="/" element={<Landing isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} />}>
 
         </Route>
 
-        <Route path="register" element={<Register isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} setZip={setZip} zip={zip} setDm={setDm} dm={dm} />}>
+        <Route path="/register" element={<Register isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} setEmail={setEmail} email={email} setZip={setZip} zip={zip} setDm={setDm} dm={dm} />}>
 
         </Route>
 
-        <Route path="home" element={<Home />}>
+        <Route path="/home" element={<Home />}>
 
         </Route>
       </Routes>

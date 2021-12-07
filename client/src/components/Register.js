@@ -13,8 +13,11 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
 
     function handleRegisterSubmit(event) {
     event.preventDefault();
-    console.log(event)
-    fetch("http://localhost:3000/users", {
+    console.log(event, username,
+        password,
+        email,
+        zip,)
+    fetch("/users", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -37,7 +40,7 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
         <div className="login-form">
                 <div className="form-box solid">
                     <form onSubmit={handleRegisterSubmit}>
-                        <h1 className="login-text">Sign In</h1>
+                        <h1 className="login-text">Register</h1>
                         <label>Username</label><br></br>
                         <input
                             type="text"
@@ -64,7 +67,7 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
                             type="text" name="zipcode" pattern="[0-9]{5}" title="Five digit zip code"
                             onChange={(e) => setZip(e.target.value)} 
                             /><br></br>
-                            <input type="submit" value="LOGIN" className="login-btn" /><br></br>
+                            <input type="submit" value="Sign Up" className="login-btn" /><br></br>
                     </form>
                 </div>
             </div>

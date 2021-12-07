@@ -10,8 +10,8 @@ function NavBar({ handleLoginClick }) {
     return (
         <div className="navbar">
             <div>
-                <NavLink to="/home" exact className="home-icon">Home</NavLink>
-                <NavLink to="/search" exact className="search-icon">Search</NavLink>
+                {/* <NavLink to="/home" exact className="home-icon">Home</NavLink>
+                <NavLink to="/search" exact className="search-icon">Search</NavLink> */}
                 <span onClick={handleClick} className="loginicon">Sign In</span>
             </div>
         </div>
