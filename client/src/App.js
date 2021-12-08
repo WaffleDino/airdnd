@@ -42,12 +42,14 @@ function App() {
 
   return (
     <div className="App">
+      {/* <div style={{backgroundImage: `url("image/d20.jpg")`}}></div> */}
+      <div>
       <Router>
-      <NavBar handleLoginClick={handleLoginClick} currentUsername={currentUsername} />
+      <NavBar handleLoginClick={handleLoginClick} currentUser={currentUser} currentUsername={currentUsername}/>
 
       <Routes>
   
-        <Route path="/search" element={<Search />}>
+        <Route path="/search" element={<Search currentUser={currentUser}/>}>
           
         </Route>
         <Route path="/" element={<Landing isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} />}>
@@ -58,12 +60,12 @@ function App() {
 
         </Route>
 
-        <Route path="/home" element={<Home />}>
+        <Route path="/home" element={<Home currentUser={currentUser}/>}>
 
         </Route>
       </Routes>
       </Router>
-    
+      </div>
     </div>
   );
 }

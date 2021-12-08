@@ -25,7 +25,7 @@ function Landing({ isShowLogin, setCurrentUser, setUsername, setPassword, userna
                     
             }) 
               .then((r) => r.json())
-              .then((user) => setCurrentUser(user.username));
+              .then((user) => setCurrentUser(user));
               navigate('/home')
             
           }

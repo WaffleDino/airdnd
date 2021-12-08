@@ -1,5 +1,14 @@
 .App {
   text-align: center;
+  /* background-image: url("images/extra-life.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: 50%;
+  background-position-y: 9%; */
+  
+}
+.background-image{
+  background-image: url("images/d20.jpg");
 }
 
 .App-logo {
