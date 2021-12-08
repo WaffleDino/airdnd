@@ -9,9 +9,11 @@ class CreateCampaigns < ActiveRecord::Migration[6.1]
       t.string :char_level_range
       t.integer :host_id
       t.integer :dm_id
-      t.string :info
+      
+      
 
       t.timestamps
     end
   end
 end
+2

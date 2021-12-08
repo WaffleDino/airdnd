@@ -4,4 +4,19 @@ class CampaignsController < ApplicationController
         render json: Campaign.all
     end
 
+    def create
+        new_campaign = Campaign.create!(new_campaign_params)
+        render json: new_campaign, status: :created
+    end
+
+    def show
+        current_user = User.find(session[:user_id])
+        render json: current_user
+    end
+
+    private 
+
+    def new_campaign_params
+        params.permit(:id, :name, :version, :num_of_players, :meetup_day, :meetup_time, :char_level_range, :info, :zipcode)
+    end
 end

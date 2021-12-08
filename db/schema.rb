@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_234147) do
+ActiveRecord::Schema.define(version: 2021_12_08_231606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 2021_12_02_234147) do
     t.string "version"
     t.integer "num_of_players"
     t.string "meetup_day"
-    t.time "meetup_time"
+    t.string "meetup_time"
     t.string "char_level_range"
     t.integer "host_id"
     t.integer "dm_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "zipcode"
+    t.string "info"
   end
 
   create_table "characters", force: :cascade do |t|
