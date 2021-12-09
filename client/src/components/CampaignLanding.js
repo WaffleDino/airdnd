@@ -21,13 +21,17 @@ useEffect(() => {
     // .then(json => console.log(json))
     .then(json => setAllCampaigns(json))
 }, [])
+const filteredCampaigns = [];
 
-const renderCampaigns = () => {
-    console.log()
-    if (!!allCampaigns) {
-        return allCampaigns.map((each) => {
-            return (
-                <div className="container">
+const filterCampaign = !!allCampaigns ? allCampaigns.filter(each => {
+    if (each.zipcode.toLowerCase().includes(search.toLocaleLowerCase())) {
+        return filteredCampaigns.push(each);
+    }}) : null;
+
+const campaignsToDisplay = filteredCampaigns.map(
+    (each) => {
+        return(
+            <div className="container">
                     <div className="card">
                     <h2>Campaign: {each.name}</h2>
                     <br></br>
@@ -49,16 +53,48 @@ const renderCampaigns = () => {
                     
                     </div>
                 </div>
-            )
-        })
-//     } else {
-//         result = allCampaigns.filter((data) => {
-//             return (data.zipcode.search(search) != -1)
-//         // allCampaigns.filter(each => each.zipcode.includes({search})).map(filteredCampaign => <li>{filteredCampaign.zipcode}</li>)
-//     }
-//         )
+        )
     }
-}
+)
+
+
+// const renderCampaigns = () => {
+//     console.log()
+//     if (!!allCampaigns) {
+//         return allCampaigns.map((each) => {
+//             return (
+//                 <div className="container">
+//                     <div className="card">
+//                     <h2>Campaign: {each.name}</h2>
+//                     <br></br>
+//                     <p>Players: {each.num_of_players}</p>
+                    
+//                     <p>Level Range: {each.char_level_range}</p>
+//                     <br></br>
+//                     <h3>When?</h3>
+                        
+//                             <p>Meeting Day: {each.meetup_day}</p>
+//                             <p>Meeting Time: {each.meetup_time}</p>
+                        
+                    
+//                     <h3> Zipcode: {each.zipcode}</h3>
+                    
+//                     <br></br>
+//                         <h3>Meeting Info:</h3>
+//                         <p>{each.info}</p>
+                    
+//                     </div>
+//                 </div>
+//             )
+//         })
+// //     } else {
+// //         result = allCampaigns.filter((data) => {
+// //             return (data.zipcode.search(search) != -1)
+// //         // allCampaigns.filter(each => each.zipcode.includes({search})).map(filteredCampaign => <li>{filteredCampaign.zipcode}</li>)
+// //     }
+// //         )
+//     }
+// }
     
 
 
@@ -86,19 +122,19 @@ const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"
             
             <button className="add-icon" onClick={handleAdd}>Add New Campaign</button>
             
-            {renderCampaigns()}
+            {campaignsToDisplay}
            
             <br></br>
             <br></br>
             <br></br>
-    {/* <input 
+    <input 
      style={BarStyling}
      key="random1"
      maxLength={5}
      pattern="[0-9]{5}"
      placeholder={"filter by zip code"}
      onChange={(e) => setSearch(e.target.value)}
-    /> */}
+    />
         </div>
     )
 }
