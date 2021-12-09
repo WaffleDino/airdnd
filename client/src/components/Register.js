@@ -1,8 +1,9 @@
 import React from "react";
 import {useState} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, username, password, email, setEmail, dm, setDm, zip, setZip, setPasswordConfirmation, passwordConfirmation }) {
-
+    const navigate = useNavigate();
     // const [newUser, setNewUser] = useState({
     //     username: '', 
     //     password: '',
@@ -35,6 +36,7 @@ function Register({ isShowLogin, setCurrentUser, setUsername, setPassword, usern
             response.json().then((userData) => setCurrentUser(userData))
         }
     })
+    navigate('/')
 }
 
     return (

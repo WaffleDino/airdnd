@@ -17,6 +17,6 @@ class CampaignsController < ApplicationController
     private 
 
     def new_campaign_params
-        params.permit(:id, :name, :version, :num_of_players, :meetup_day, :meetup_time, :char_level_range, :info, :zipcode)
+        params.permit(:id, :name, :version, :num_of_players, :meetup_day, :meetup_time, :char_level_range, :host_id, :dm_id, :info, :zipcode)
     end
 end

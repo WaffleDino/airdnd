@@ -27,12 +27,13 @@ function NavBar({ handleLoginClick, currentUser, currentUsername }) {
                 {currentUser ? 
                 <>
                 <NavLink to="/home" exact className="home-icon">Home</NavLink>
-                <NavLink to="/search" exact className="search-icon">Search</NavLink>
+                <NavLink to="/campaigns" exact className="search-icon">Active Campaigns</NavLink>
                 <h1 style={styles}>AirDnD</h1>
                 <span onClick={handleLogout} className="logouticon">Logout {currentUser.username}</span>
                 </>
                 :
                 <>
+                <h1 style={styles}>AirDnD</h1>
                 <span onClick={handleClick} className="loginicon">Sign In</span>
                 </>
 }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
-function Search({currentUser}) {
-
+function Campaigns({currentUser}) {
+    const navigate = useNavigate();
 
     const [newCampaign, setNewCampaign] = useState({
         campaign_name: '',
@@ -11,13 +12,13 @@ function Search({currentUser}) {
         meetup_day: '',
         meetup_time: '',
         char_level_range: '',
-        dm: '',
+        dm: currentUser.id,
         info: '',
         zipcode: 0 
 
     })
 
-    function toggleDM (e) {
+    function toggleDM (e, currentUser) {
         if (e.target.checked == true) {
             setNewCampaign({
                 ...newCampaign,
@@ -33,6 +34,7 @@ function Search({currentUser}) {
     
 
     function handleCampaignSubmit(event) {
+        
         event.preventDefault();
         
         fetch("/campaigns", {
@@ -53,7 +55,7 @@ function Search({currentUser}) {
               zipcode: newCampaign.zipcode            
                   })  
         })
-                
+          navigate('/campaigns')      
     }
 
     const handleChange = (e) => {
@@ -117,13 +119,13 @@ return(
                             className="login-box"
                             onChange={handleChange}
                             /><br></br>
-                        <label>Are you the Dungeon Master?</label><br></br>
+                        {/* <label>Are you the Dungeon Master?</label><br></br>
                             <input
                             type="checkbox"
                             name="dm"
                             className="login-box"
                             onClick={toggleDM}
-                            /><br></br>
+                            /><br></br> */}
                         <label>General Information</label><br></br>
                             <input
                             type="text"
@@ -154,4 +156,4 @@ return(
         </div>
 )
 }
-export default Search;
+export default Campaigns;

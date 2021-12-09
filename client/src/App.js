@@ -8,10 +8,11 @@ import {
 } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
-import Search from "./components/Search";
+import Campaigns from "./components/Campaigns";
 import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Register from "./components/Register";
+import CampaignLanding from "./components/CampaignLanding";
 
 function App() {
 
@@ -49,7 +50,11 @@ function App() {
 
       <Routes>
   
-        <Route path="/search" element={<Search currentUser={currentUser}/>}>
+        <Route path="/addcampaign" element={<Campaigns currentUser={currentUser}/>}>
+          
+        </Route>
+
+        <Route path="/campaigns" element={<CampaignLanding currentUser={currentUser}/>}>
           
         </Route>
         <Route path="/" element={<Landing isShowLogin={isShowLogin} setCurrentUser={setCurrentUser} setPassword={setPassword} password={password} setUsername={setUsername} username={username} />}>
