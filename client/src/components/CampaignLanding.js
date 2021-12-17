@@ -2,17 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router";
 import Campaigns from "./Campaigns";
 import { NavLink, useNavigate } from "react-router-dom";
+import {Alert} from 'react-alert'
 
 function CampaignLanding () {
     const [allCampaigns, setAllCampaigns] = useState([])
     const [search, setSearch] = useState("")
 
     let result = [];
-
+    const filteredCampaigns = [];
 const navigate = useNavigate();
 
 const handleAdd = () => {
     navigate('/addcampaign')
+}
+
+const handleDeleteCampaign = (id) => {
+    if (filteredCampaigns.host_id == id) {
+    fetch(`/campaigns/${id}`, {
+        method: 'DELETE'
+    })
+    .then(removeGameFromState(id))
+}else{alert("Must be your Campaign to delete!")}
+}
+
+const removeGameFromState = (id) => {
+   const newFilteredCampaign = filteredCampaigns.filter(each => {
+        return each.id !== id
+    })
+    setAllCampaigns(newFilteredCampaign)
 }
 
 useEffect(() => {
@@ -21,7 +38,7 @@ useEffect(() => {
     // .then(json => console.log(json))
     .then(json => setAllCampaigns(json))
 }, [])
-const filteredCampaigns = [];
+
 
 const filterCampaign = !!allCampaigns ? allCampaigns.filter(each => {
     if (each.zipcode.toLowerCase().includes(search.toLocaleLowerCase())) {
@@ -50,7 +67,7 @@ const campaignsToDisplay = filteredCampaigns.map(
                     <br></br>
                         <h3>Meeting Info:</h3>
                         <p>{each.info}</p>
-                    
+                        <button onClick={() => handleDeleteCampaign(each.id)}>Delete</button>
                     </div>
                 </div>
         )
@@ -111,7 +128,7 @@ const campaignsToDisplay = filteredCampaigns.map(
 //     console.log(search)
 // }
 
-const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
+const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem", background:"#24252A", color:"white"};
  
 
 
@@ -119,15 +136,7 @@ const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"
     return(
         <div className="site-body">
             <br></br>
-            
-            <button className="add-icon" onClick={handleAdd}>Add New Campaign</button>
-            
-            {campaignsToDisplay}
-           
-            <br></br>
-            <br></br>
-            <br></br>
-    <input 
+            <input 
      style={BarStyling}
      key="random1"
      maxLength={5}
@@ -135,6 +144,21 @@ const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"
      placeholder={"filter by zip code"}
      onChange={(e) => setSearch(e.target.value)}
     />
+            <button className="add-icon" onClick={handleAdd}>Add New Campaign</button>
+            
+            {campaignsToDisplay}
+           
+            <br></br>
+            <br></br>
+            <br></br>
+    {/* <input 
+     style={BarStyling}
+     key="random1"
+     maxLength={5}
+     pattern="[0-9]{5}"
+     placeholder={"filter by zip code"}
+     onChange={(e) => setSearch(e.target.value)}
+    /> */}
         </div>
     )
 }

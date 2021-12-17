@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   delete "/logout", to: "sessions#destroy"
   post "/campaigns", to: "campaigns#create"
-  
+  delete "/campaigns/:id", to: "campaigns#destroy"
+
 end
